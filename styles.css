@@ -8,4 +8,12 @@ td {
 
 td.left {
   text-align: left;
+} 
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
