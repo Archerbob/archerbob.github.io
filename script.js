@@ -1,10 +1,27 @@
 function filterData() {
   event.preventDefault();
-  var startdate = document.getElementById("startdate").value;
-  var enddate = document.getElementById("enddate").value;
-  console.log(startdat);
+  
+  var startdate = new Date(document.getElementById("startdate").value);
+  var enddate = new Date(document.getElementById("enddate").value);
+  
+  console.log(startdate);
   console.log(enddate);
+
+  var tableRows = document.querySelectorAll("#pitchData tr");
+
+  tableRows.forEach(row => {
+    var dateText = row.cells[1].textContent; // Get the date from the 2nd column (index 1)
+    var rowDate = new Date(dateText);
+
+    // Check if the row date is within the specified date range
+    if (rowDate >= startdate && rowDate <= enddate) {
+      row.style.display = ""; // Show row
+    } else {
+      row.style.display = "none"; // Hide row
+    }
+  });
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const tableBody = document.getElementById('pitchData');
